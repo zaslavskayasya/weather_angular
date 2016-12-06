@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="weather">
+<head>
+   <meta charset="utf-8" >
+   <meta name="viewport" content="width=device-width, initial-scale=1.0/">
+    <title>ANWeather</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+
+    <!-- design from http://www.w3schools.com/w3css/tryw3css_templates_architect.htm  -->
+</head>
+<body>
+
+<div class="topWrap">
+        <div class="top">
+         <div class="logo">
+          <a href="#home"><b>AN</b> Weather </a>
+         </div>
+         <div class="menu">
+             <a href="#"> Погода сейчас </a>
+             <a href="#"> Прогноз </a>
+         </div>
+    </div>
+</div>
+<header class="header">
+    <div class="headerNameWrap">
+        <h1 class="headerName"><span>AN</span>Weather</h1>
+    </div>
+</header>
+
+
+
+<section  ng-controller="weathersController as forecasts">
+    <div class="buttons">
+        <button class="" ng-click="forecasts.selectTab(1)" > <h2 class="sectionName"> Forecast </h2> </button>
+        <button ng-click="forecasts.selectTab(2)" ><h2 class="sectionName" >Current </h2> </button>
+    </div>
+
+<div class="currentSection" ng-if="forecasts.tab==1" >
+     <div class="currentContainer">
+         <div class="current weatherBlock" >
+            <p class="forecastItem"> <span class="itemSpan" >Дата: </span> {{forecasts.weatherCurrent.date}}</p>
+            <p class="forecastItem">Температура: {{weatherCurrent.temp}}</p>
+            <p class="forecastItem">Wind: {{weatherCurrent.wind}}</p>
+             <img  ng-show="forecasts.weatherCurrent.temp > 2" width="50px" height="50px" src="img/thermometer.svg">
+             <img  ng-show="forecasts.weatherCurrent.temp < 2 " width="50px" height="50px" src="img/temperature.svg">
+         </div>
+     </div>
+</div>
+
+<div class="Forecast Section" ng-if="forecasts.tab==2" >
+    <div class="ForecastContainer">
+        <weather-item ng-repeat="weather in weatherForecast" > </weather-item>
+    </div>
+</div>
+</section>
+
+<section class="about">
+ggg
+</section>
+
+</body>
+</html>
