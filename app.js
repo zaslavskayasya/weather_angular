@@ -31,40 +31,40 @@ app.controller('weathersController', function ($scope, API) {
     coord2 = Pos;
     console.log(coord1,coord2);*/
 
-
-    API.getWeatherCurrent().then(function (current) {
-        $scope.current = current;
-       /* console.log(current);*/
-    });
-
-    $scope.current = [];
-
-    API.getWeatherForecast().then(function (forecast) {
-        $scope.forecast = forecast;
-  /*      console.log(forecast);*/
-    });
-
-    $scope.my_forecast = [ ];
-
+    $scope.searchSettings = {
+        query: 'Kiev'
+    };
 
     $scope.searchCity = function () {
         API.SearchCity($scope.searchSettings).then(function (search) {
             $scope.search = search;
             console.log(search);
         });
+
+        API.getWeatherCurrent($scope.searchSettings).then(function (current) {
+
+            $scope.current = current;
+            console.log(current);
+        });
+        API.getWeatherForecast($scope.searchSettings).then(function (forecast) {
+            $scope.forecast = forecast;
+            /*      console.log(forecast);*/
+        });
+
     };
-    $scope.searchSettings = {
-        query: 'Kiev'
-    };
+
+
+    $scope.current = [];
+
+    $scope.my_forecast = [ ];
 
     $scope.searched = [];
-
 
 });
 
 app.service('API', function ($http, $q){
     return {
-        getWeatherCurrent: function () {
+        getWeatherCurrent: function (params) {
             var key = '5c40c72b9b544023b9b74029162111';
             var d = $q.defer();
             $http({
@@ -72,7 +72,7 @@ app.service('API', function ($http, $q){
                 url: 'http://api.apixu.com/v1/current.json',
                 params: {
                     key : key,
-                    q: city
+                    q: params.query
                 }
             }).then(function (data) {
                 var current = data.data.current;
@@ -82,7 +82,7 @@ app.service('API', function ($http, $q){
             });
             return d.promise;
         },
-        getWeatherForecast: function () {
+        getWeatherForecast: function (params) {
             var key = '5c40c72b9b544023b9b74029162111';
             var d = $q.defer();
             $http({
@@ -90,7 +90,7 @@ app.service('API', function ($http, $q){
                 url: 'http://api.apixu.com/v1/forecast.json',
                 params: {
                     key : key,
-                    q: city,
+                    q: params.query,
                     days: '7'
                 }
             }).then(function (data) {
