@@ -1,11 +1,11 @@
   <div class="forecastDay weatherBlock "  >
 
 
-        <p class="forecastItem"> <span class="itemSpan" >Дата: </span> {{weather.date}}</p>
-        <p class="forecastItem">Температура максмальная: {{ weather.day.avgtemp_c}} С</p>
-        <p class="forecastItem">Температура средняя: {{ weather.day.avgtemp_c}} С</p>
-        <p class="forecastItem">Температура минимальная: {{ weather.day.mintemp_c}} С</p>
-        <p class="forecastItem">Ветер:{{weather.day.maxwind_kph}} км\ч</p>
+      <img class="DayIcon" src="img/calendar.svg"> <p class="forecastItem">  {{weather.date}}</p>
+        <p class="forecastItem">Температура максмальная: <span>{{ weather.day.avgtemp_c}} </span>  С</p>
+        <p class="forecastItem">Температура средняя: <span>{{ weather.day.avgtemp_c}} С </span> </p>
+        <p class="forecastItem">Температура минимальная: <span>{{ weather.day.mintemp_c}} С</span> </p>
+        <p class="forecastItem">Ветер: <span> {{weather.day.maxwind_kph}} км\ч</span> </p>
 
           <img src="http:{{weather.day.condition.icon}}">
         <img  ng-show="weather.temp > 2" width="50px" height="50px" src="img/thermometer.svg">

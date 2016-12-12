@@ -32,42 +32,32 @@
     </div>
 </header>
 
-
 <section  ng-controller="weathersController as forecasts">
-    <div class="buttons">
-        <button class="" ng-click="forecasts.selectTab(0)" > <h2 class="sectionName"> Одесса </h2> </button>
-        <button class="" ng-click="forecasts.selectTab(1)" > <h2 class="sectionName"> Сейчас </h2> </button>
-        <button ng-click="forecasts.selectTab(2)" ><h2 class="sectionName" > Прогноз </h2> </button>
-    </div>
 
-
-
-
-    <div class="searchSection" ng-if="forecasts.tab==0" >
-
-        <div class="currentContainer">
-            <div class="form-group">
-                <input  placeholder="Text input" required type="text" ng-model="searchSettings.query"/>
-                <button ng-click="searchCity()">Search</button>
-                {{searchSettings.query}}
-            </div>
-            <div class="current weatherBlock" >
-                <p class="forecastItem">Температура: {{search.name}} С</p>
-                <p class="forecastItem">Lat: {{search.lat}} С</p>
-                <p class="forecastItem">Ощущается как: {{current.feelslike_c}} C</p>
-
-            </div>
-
+    <div class="currentContainer askBlock">
+        <div class="form-group formBlock">
+            <input  placeholder="Text input" required type="text" ng-model="searchSettings.query"/>
+            <button class="button" ng-click="searchCity()">Search</button>
+            <button class="button " ng-click="searchGeo()"> Geo</button>
+        </div>
+        <div class="cityChecked" ng-if="search.name.length > 2" >
+            <p class="">Вы выбрали: {{search.name}} </p>
         </div>
     </div>
+
+    <div class="buttons">
+        <button class="button" ng-click="forecasts.selectTab(1)"> <h2 class="sectionName"> Сейчас </h2> </button>
+        <button class="button" ng-click="forecasts.selectTab(2)"><h2 class="sectionName" > Прогноз </h2> </button>
+    </div>
+
     <div class="currentSection" ng-if="forecasts.tab==1" >
      <div class="currentContainer">
          <div class="current weatherBlock" >
-            <p class="forecastItem"> <span class="itemSpan" >Сейчас: </span> {{current.last_updated}}</p>
-            <p class="forecastItem">Температура: {{current.temp_c}} С</p>
-            <p class="forecastItem">Ощущается как: {{current.feelslike_c}} C</p>
-            <p class="forecastItem">Влажность: {{current.humidity}} % </p>
-            <p class="forecastItem">Wind: {{weatherCurrent.wind_kph}} км/ч </p>
+             <img class="DayIcon" src="img/calendar.svg"> <p class="forecastItem">  {{current.last_updated}}</p>
+            <p class="forecastItem">Температура:  <span>{{current.temp_c}} С </span> </p>
+            <p class="forecastItem">Ощущается как: <span>{{current.feelslike_c}} C </span> </p>
+            <p class="forecastItem">Влажность: <span>{{current.humidity}} % </span>  </p>
+            <p class="forecastItem">Wind: <span> {{weatherCurrent.wind_kph}} км/ч </span>  </p>
              <img  ng-show="current.humidity > 2 " width="50px" height="50px" src="img/thermometer.svg">
              <img  ng-show="current.humidity < 2 " width="50px" height="50px" src="img/temperature.svg">
             <!-- <img src="http:{{current.condition.icon}}">  -->
@@ -83,7 +73,7 @@
 </section>
 
 <section class="about">
-ggg
+ Задание Заславской Анастасии. Приложение на Ангуляре. 2016
 </section>
 
 </body>

@@ -5,9 +5,13 @@
   font-weight: normal;
   font-style: normal;
 }
+body {
+  background-color: #efefef;
+}
 .topWrap {
   position: fixed;
   width: 100%;
+  z-index: 1;
 }
 .top {
   display: flex;
@@ -38,6 +42,7 @@
   height: 600px;
   min-height: 200px;
   padding: 20px;
+  margin-bottom: 30px;
 }
 .headerNameWrap {
   margin-top: 270px;
@@ -52,6 +57,19 @@
   border: 1px solid #000;
   margin-right: 10px;
   font-weight: bold;
+}
+.askBlock {
+  text-align: center;
+}
+.formBlock {
+  display: block;
+  margin: 10px;
+  width: 55%;
+}
+.cityChecked {
+  display: block;
+  margin: 10px;
+  width: 55%;
 }
 .ForecastContainer {
   display: flex;
@@ -68,11 +86,17 @@
   flex-basis: 100px;
   height: 200px;*/
   /*width: 30%;*/
-  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 3px;
   margin: 10px;
 }
 .sectionName {
   text-align: center;
+}
+.DayIcon {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
 }
 .currentContainer,
 .buttons {
@@ -83,42 +107,60 @@
 .current {
   min-height: 200px;
   width: 30%;
-  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 3px;
+  margin-bottom: 20px;
 }
 .buttons {
   padding: 30px;
 }
-.buttons button {
+.button {
   border: none;
   display: inline-block;
+  border-radius: 3px;
   outline: 0;
-  padding: 6px 16px;
+  width: 150px;
+  padding: 16px 20px;
   vertical-align: middle;
   overflow: hidden;
+  box-shadow: 0 3px 0px #4a90bb;
   text-decoration: none!important;
   color: #fff;
-  background-color: #000;
+  background-color: #4a93bf;
   text-align: center;
   cursor: pointer;
   white-space: nowrap;
   margin-left: 20px;
   margin-top: 10px;
+  font-weight: 100;
+  letter-spacing: 2px;
 }
-.buttons h2 {
+.button h2 {
   margin: 0px;
+  font-size: 16px;
+  font-weight: 100;
+}
+.button:hover {
+  background-color: #5ab0e4;
 }
 .weatherBlock {
-  padding: 0px 10px;
+  padding: 10px 10px;
   position: relative;
 }
 .forecastItem {
   margin: 0px;
   padding: 10px;
 }
-.forecastItem:first-child {
-  margin-left: 30%;
+.forecastItem:nth-child(2) {
   padding: 0px;
   padding: 4px;
+  height: 29px;
+  font-weight: bold;
+  display: inline-block;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.forecastItem > span {
   font-weight: bold;
 }
 .itemSpan {
@@ -130,5 +172,10 @@
   padding: 4px;
 }
 .about {
-  height: 300px;
+  height: 50px;
+  background: #ccc;
+  text-align: center;
+  padding: 17px 10px;
+  color: #7b7b7b;
+  font-size: 10px;
 }
