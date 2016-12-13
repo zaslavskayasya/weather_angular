@@ -34,14 +34,14 @@ app.controller('weathersController', function ($scope, API) {
             Pos = Pos.toFixed(1);*/
             console.log(lat);
             console.log( lon);
-            var od = lon + ',' + lat;
+            var od = lat + ',' + lon;
             console.log(od);
-            console.log(typeof od);
+            console.log(typeof od);    /** полученные координаты выводятся и правильно */
         });
         API.SearchCity2($scope.searchSettings).then(function(od) {
             console.log(od);
             $scope.od = od;
-            console.log(od);
+            console.log(od);  /** тут тоже выводятся данные геолокации*/
         });
         API.getWeatherCurrent2($scope.searchSettings).then(function (current) {
             $scope.current = current;
@@ -55,7 +55,8 @@ app.controller('weathersController', function ($scope, API) {
 
     $scope.searchSettings = {
         query: 'Kiev',
-        od: 'lat,lon'
+        od: 'lat,lon'  /**а вот эти уходят в запрос и возвращают неправильный результат типа Афганистана, Франции и т.д., в
+                         зависимости от ого, в каком порядке написать lon / lat */
     };
 
     $scope.current = [];
